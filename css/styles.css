@@ -1,0 +1,106 @@
+body{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar{
+    background-color: #ddd;
+    padding: 0 1rem;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar a{
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+.nav-button{
+    border: 1px solid;
+    padding: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.nav-menu{
+    display: none;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background-color: #ddd;
+    margin: 0;
+    list-style: none;
+}
+.nav-menu.show,
+.nav-drop.show .dropdown{
+    display: initial;
+}
+.nav-item, .nav-drop, .drop-item{
+    padding: 10px 20px;
+}
+
+.dropdown{
+    display: none;
+    list-style: none;
+}
+
+.nav-item:hover, .nav-drop:hover{
+    background-color: lightgrey;
+}
+.nav-drop{
+    position: relative;
+}
+.nav-drop::after{
+    content: "";
+    position: absolute;
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #000 transparent transparent;
+}
+.nav-drop.show::after{
+    border-color: transparent transparent #000;
+}
+
+@media screen and (min-width: 768px){
+    .nav-button{
+        display: none;
+    }
+    .nav-menu{
+        display: initial;
+        position: static;
+        background-color: unset;
+    }
+    .nav-item, .nav-drop{
+        display: inline-block;
+        line-height: 80px;
+        height: 100%;
+        padding: 0 10px;
+    }
+    .dropdown{
+        position: absolute;
+        top: 80px;
+        right: 0;
+        background-color: #ddd;
+        width: max-content;
+        margin: 0;
+        padding: 0 20px;
+    }
+    .nav-drop{
+        padding-right: 20px;
+    }
+
+    .nav-drop::after{
+        top: 50%;
+        right: 5px;
+    }
+    .nav-drop.show::after{
+        top: calc(50% - 7px)
+    }
+}
